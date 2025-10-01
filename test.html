@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Test - Three.js Loading</title>
+<style>
+  body { margin: 0; background: #0b1020; color: #fff; font-family: monospace; }
+  #status { position: fixed; top: 10px; left: 10px; z-index: 100; background: rgba(0,0,0,0.8); padding: 20px; border-radius: 8px; }
+  #app { width: 100vw; height: 100vh; }
+</style>
+</head>
+<body>
+<div id="status">
+  <h2>Loading Status:</h2>
+  <div id="log"></div>
+</div>
+<div id="app"></div>
+
+<script type="module">
+const log = document.getElementById('log');
+function addLog(msg, isError = false) {
+  const p = document.createElement('p');
+  p.textContent = msg;
+  p.style.color = isError ? '#ff6b6b' : '#4ade80';
+  log.appendChild(p);
+  console.log(msg);
+}
+
+addLog('Starting script...');
+
+try {
+  addLog('Attempting to import THREE.js...');
+  const THREE = await import('https://unpkg.com/three@0.160.0/build/three.module.js');
+  addLog('✓ THREE.js loaded successfully!');
+  
+  addLog('Attempting to import OrbitControls...');
+  const { OrbitControls } = await import('https://unpkg.com/three@0.160.0/examples/jsm/controls/OrbitControls.js');
+  addLog('✓ OrbitControls loaded successfully!');
+  
+  addLog('Attempting to import CSS2DRenderer...');
+  const { CSS2DRenderer, CSS2DObject } = await import('https://unpkg.com/three@0.160.0/examples/jsm/renderers/CSS2DRenderer.js');
+  addLog('✓ CSS2DRenderer loaded successfully!');
+  
+  addLog('Creating scene...');
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x0b1020);
+  
+  const camera = new THREE.PerspectiveCamera(55, window.innerWidth/window.innerHeight, 0.1, 2000);
+  camera.position.set(0, 0, 150);
+  
+  const renderer = new THREE.WebGLRenderer({antialias:true});
+  renderer.setPixelRatio(window.devicePixelRatio);
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  document.getElementById('app').appendChild(renderer.domElement);
+  
+  addLog('✓ Scene created!');
+  
+  // Create a simple test cube
+  const geometry = new THREE.BoxGeometry(20, 20, 20);
+  const material = new THREE.MeshBasicMaterial({ color: 0x60a5fa, wireframe: true });
+  const cube = new THREE.Mesh(geometry, material);
+  scene.add(cube);
+  
+  addLog('✓ Test cube added!');
+  
+  // Animation loop
+  function animate() {
+    requestAnimationFrame(animate);
+    cube.rotation.x += 0.01;
+    cube.rotation.y += 0.01;
+    renderer.render(scene, camera);
+  }
+  animate();
+  
+  addLog('✓ Animation started! You should see a rotating cube.');
+  
+} catch (error) {
+  addLog('ERROR: ' + error.message, true);
+  console.error('Full error:', error);
+}
+</script>
+</body>
+</html>
+
