@@ -22,7 +22,7 @@ Simply open `ai_agents_3d.html` in a modern web browser. No installation or buil
 
 ### Online Demo
 
-Visit the live demo: [https://garason-griesel.github.io/remote-agent-display/ai_agents_3d.html](https://garason-griesel.github.io/remote-agent-display/ai_agents_3d.html)
+Visit the live demo: [https://beerberidie.github.io/remote-agent-display/ai_agents_3d.html](https://beerberidie.github.io/remote-agent-display/ai_agents_3d.html)
 
 ## 🎮 Controls
 
