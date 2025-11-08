@@ -2,6 +2,18 @@
 
 An interactive 3D visualization of an AI agent architecture system, showcasing the relationships and hierarchies between different specialized AI agents.
 
+[[![Live Demo](https://img.shields.io/badge/Live-Demo-success.svg)](https://beerberidie.github.io/remote-agent-display/ai_agents_3d.html)
+[[![Three.js](https://img.shields.io/badge/Three.js-0.160-000000.svg)](https://threejs.org/)
+[[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+## 🎮 [Try the Live Demo!](https://beerberidie.github.io/remote-agent-display/ai_agents_3d.html)
+
+**Explore now:** https://beerberidie.github.io/remote-agent-display/ai_agents_3d.html
+
+No installation required – just click and explore! Interact with 24 AI agents in an immersive 3D environment.
+
+---
+
 ![AI Agents 3D Neural Graph](screenshot.png)
 
 ## 🌟 Features
@@ -35,7 +47,7 @@ Visit the live demo: [https://beerberidie.github.io/remote-agent-display/ai_agen
 - **Reset Camera**: Return to default view
 - **Export PNG**: Save current visualization
 
-## 🛠️ Technology
+## 🛠��� Technology
 
 - **Three.js** - 3D rendering engine
 - **Pure JavaScript** - No frameworks required
@@ -72,4 +84,3 @@ Contributions are welcome! Feel free to submit issues or pull requests.
 ---
 
 **Built with ❤️ using Three.js**
-
